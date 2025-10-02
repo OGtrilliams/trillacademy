@@ -9,7 +9,7 @@ import {
   SignUpButton,
   UserButton,
 } from "@clerk/nextjs";
-import { ToastProvider } from "@/components/providers/toaster-provider";
+import { Toaster } from "react-hot-toast";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -38,7 +38,12 @@ export default function RootLayout({
           <body
             className={`${geistSans.variable} ${geistMono.variable} antialiased`}
           >
-            <ToastProvider />
+            <Toaster
+              position="top-center"
+              toastOptions={{
+                style: { background: "#000000", color: "#ffffff" },
+              }}
+            />
             {children}
           </body>
         </html>
