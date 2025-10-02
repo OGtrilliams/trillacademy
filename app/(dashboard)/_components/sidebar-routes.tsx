@@ -14,7 +14,7 @@ const teacherRoutes = [
   { icon: BarChart, label: "Analytics", href: "/teacher/analytics" },
 ];
 
-export const SIdebarRoutes = () => {
+export const SidebarRoutes = () => {
   const pathname = usePathname();
 
   const isTeacherPage = pathname?.includes("/teacher");
