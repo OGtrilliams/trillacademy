@@ -28,14 +28,6 @@ export const ImageForm = ({ initialData, courseId }: ImageFormProps) => {
 
   const router = useRouter();
 
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      imageUrl: initialData?.imageUrl || "",
-    },
-  });
-  const { isSubmitting, isValid } = form.formState;
-
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
       await axios.patch(`/api/courses/${courseId}`, values);
@@ -83,9 +75,10 @@ export const ImageForm = ({ initialData, courseId }: ImageFormProps) => {
           </div>
         ))}
       {isEditing && (
-        <div className="">
+        <div className="" data-state="ready">
           <FileUpload
             data-ut-element="upload-icon"
+            data-state="ready"
             endpoint="courseImage"
             onChange={(url) => {
               if (url) {
